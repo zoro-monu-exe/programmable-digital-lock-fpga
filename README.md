@@ -124,16 +124,18 @@ clock, inputs, state-derived outputs, errors, lockout, and LED colors. The
 simulations cover the logic and board wrapper, but not Gowin place-and-route,
 the physical pin soldering, or actual hardware.
 
-For the full local checks, install Icarus Verilog, Verilator, and Yosys, then
-run:
+For the full local checks, install Icarus Verilog, Verilator, and a Yosys build
+that includes `synth_gowin`, then run:
 
 ```sh
 make verify
 ```
 
-This runs all simulations, Verilator lint, and a generic Yosys synthesis/check
-of `tang_nano_1k_top`. The Yosys result is not a Gowin bitstream, place-and-route,
-or board timing report.
+This runs all simulations, Verilator lint, generic Yosys synthesis/check, and
+Gowin-family cell mapping/check with Yosys `synth_gowin`. That mapping is not a
+Gowin EDA compile, place-and-route, bitstream, or board timing report. The
+captured test output is in [OUTPUT_VERIFICATION.md](OUTPUT_VERIFICATION.md)
+and `verification/`; `make synth-gowin` refreshes its detailed mapping log.
 
 ## FPGA prototype blueprint
 
@@ -262,10 +264,10 @@ attempt count, and error indicator, and returns to Setup.
 
 **How was it verified?**
 
-`make verify` runs four Icarus simulations, Verilator lint, and generic Yosys
-synthesis/check of the Tang Nano 1K wrapper. VCD files are available for
-waveform inspection. Gowin place-and-route and physical board operation still
-need to be verified on actual hardware.
+`make verify` runs four Icarus simulations, Verilator lint, generic Yosys
+synthesis/check, and Gowin-family cell mapping/check. VCD files are generated
+for waveform inspection. See [OUTPUT_VERIFICATION.md](OUTPUT_VERIFICATION.md)
+for the captured results and the hardware tests that remain outstanding.
 
 **Is this a secure real-world lock?**
 

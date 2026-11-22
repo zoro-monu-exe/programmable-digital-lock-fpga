@@ -1,0 +1,899 @@
+$date
+	Sun Nov 22 08:02:13 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_tang_nano_1k_top $end
+$var wire 1 ! led_r_n $end
+$var wire 1 " led_g_n $end
+$var wire 1 # led_b_n $end
+$var reg 4 $ code_sw_n [3:0] $end
+$var reg 1 % relock_button_n $end
+$var reg 1 & set_button_n $end
+$var reg 1 ' submit_button_n $end
+$var reg 1 ( sys_rst_n $end
+$var reg 1 ) xtal_27m $end
+$scope module dut $end
+$var wire 4 * code_sw_n [3:0] $end
+$var wire 1 % relock_button_n $end
+$var wire 1 & set_button_n $end
+$var wire 1 ' submit_button_n $end
+$var wire 1 ( sys_rst_n $end
+$var wire 1 ) xtal_27m $end
+$var wire 1 + wrong_code $end
+$var wire 1 , unlocked $end
+$var wire 1 - lockout $end
+$var wire 1 . locked $end
+$var wire 1 / code_programmed $end
+$var parameter 32 0 FILTER_CYCLES $end
+$var reg 1 # led_b_n $end
+$var reg 1 " led_g_n $end
+$var reg 1 ! led_r_n $end
+$scope module lock $end
+$var wire 1 ) clk $end
+$var wire 4 1 code_switches [3:0] $end
+$var wire 1 2 relock_button $end
+$var wire 1 3 rst $end
+$var wire 1 4 set_code_button $end
+$var wire 1 5 submit_button $end
+$var wire 1 + wrong_code $end
+$var wire 1 , unlocked $end
+$var wire 1 6 submit_pulse $end
+$var wire 1 7 set_code_pulse $end
+$var wire 1 8 relock_pulse $end
+$var wire 1 - lockout $end
+$var wire 1 . locked $end
+$var wire 1 / code_programmed $end
+$var parameter 32 9 FILTER_CYCLES $end
+$var reg 4 : switch_sync_1 [3:0] $end
+$var reg 4 ; switch_sync_2 [3:0] $end
+$scope module core $end
+$var wire 1 ) clk $end
+$var wire 4 < code_switches [3:0] $end
+$var wire 1 3 rst $end
+$var wire 1 + wrong_code $end
+$var wire 1 , unlocked $end
+$var wire 1 6 submit_pulse $end
+$var wire 1 7 set_code_pulse $end
+$var wire 1 8 relock_pulse $end
+$var wire 1 - lockout $end
+$var wire 1 . locked $end
+$var wire 1 / code_programmed $end
+$var parameter 2 = LOCKED $end
+$var parameter 2 > LOCKOUT $end
+$var parameter 2 ? OPEN $end
+$var parameter 2 @ SETUP $end
+$var reg 1 A error_latched $end
+$var reg 2 B failed_attempts [1:0] $end
+$var reg 4 C saved_code [3:0] $end
+$var reg 2 D state [1:0] $end
+$upscope $end
+$scope module relock_debounce $end
+$var wire 1 2 button_in $end
+$var wire 1 ) clk $end
+$var wire 1 3 rst $end
+$var parameter 32 E COUNT_WIDTH $end
+$var parameter 32 F FILTER_CYCLES $end
+$var parameter 2 G LAST_COUNT $end
+$var parameter 2 H ONE $end
+$var reg 2 I count [1:0] $end
+$var reg 1 8 press_pulse $end
+$var reg 1 J stable_level $end
+$var reg 1 K sync_1 $end
+$var reg 1 L sync_2 $end
+$upscope $end
+$scope module set_debounce $end
+$var wire 1 4 button_in $end
+$var wire 1 ) clk $end
+$var wire 1 3 rst $end
+$var parameter 32 M COUNT_WIDTH $end
+$var parameter 32 N FILTER_CYCLES $end
+$var parameter 2 O LAST_COUNT $end
+$var parameter 2 P ONE $end
+$var reg 2 Q count [1:0] $end
+$var reg 1 7 press_pulse $end
+$var reg 1 R stable_level $end
+$var reg 1 S sync_1 $end
+$var reg 1 T sync_2 $end
+$upscope $end
+$scope module submit_debounce $end
+$var wire 1 5 button_in $end
+$var wire 1 ) clk $end
+$var wire 1 3 rst $end
+$var parameter 32 U COUNT_WIDTH $end
+$var parameter 32 V FILTER_CYCLES $end
+$var parameter 2 W LAST_COUNT $end
+$var parameter 2 X ONE $end
+$var reg 2 Y count [1:0] $end
+$var reg 1 6 press_pulse $end
+$var reg 1 Z stable_level $end
+$var reg 1 [ sync_1 $end
+$var reg 1 \ sync_2 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope task press_relock $end
+$upscope $end
+$scope task press_set $end
+$upscope $end
+$scope task press_submit $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 X
+b10 W
+b11 V
+b10 U
+b1 P
+b10 O
+b11 N
+b10 M
+b1 H
+b10 G
+b11 F
+b10 E
+b0 @
+b10 ?
+b11 >
+b1 =
+b11 9
+b11 0
+$end
+#0
+$dumpvars
+x\
+x[
+xZ
+bx Y
+xT
+xS
+xR
+bx Q
+xL
+xK
+xJ
+bx I
+bx D
+bx C
+bx B
+xA
+bx <
+bx ;
+bx :
+x8
+x7
+x6
+05
+04
+13
+02
+b0 1
+x/
+x.
+x-
+x,
+x+
+b1111 *
+0)
+0(
+1'
+1&
+1%
+b1111 $
+x#
+x"
+x!
+$end
+#5000
+1#
+0"
+0!
+0T
+0S
+07
+b0 Q
+0R
+0\
+0[
+06
+b0 Y
+0Z
+0L
+0K
+08
+b0 I
+0J
+0+
+0A
+b0 B
+b0 C
+0/
+0,
+0.
+0-
+b0 D
+b0 ;
+b0 <
+b0 :
+1)
+#10000
+0)
+#15000
+1)
+#20000
+0)
+#25000
+1)
+#30000
+03
+1(
+0)
+#35000
+1)
+#40000
+0)
+#45000
+1)
+#50000
+0)
+#55000
+1)
+#60000
+b1010 1
+b101 $
+b101 *
+0)
+#65000
+b1010 :
+1)
+#70000
+14
+0&
+0)
+#75000
+b1010 ;
+b1010 <
+1S
+1)
+#80000
+0)
+#85000
+1T
+1)
+#90000
+0)
+#95000
+b1 Q
+1)
+#100000
+0)
+#105000
+b10 Q
+1)
+#110000
+0)
+#115000
+17
+b0 Q
+1R
+1)
+#120000
+0)
+#125000
+1"
+0!
+07
+1/
+1.
+b1 D
+b1010 C
+1)
+#130000
+0)
+#135000
+1)
+#140000
+0)
+#145000
+1)
+#150000
+0)
+#155000
+1)
+#160000
+0)
+#165000
+1)
+#170000
+0)
+#175000
+1)
+#180000
+0)
+#185000
+1)
+#190000
+04
+1&
+0)
+#195000
+0S
+1)
+#200000
+0)
+#205000
+0T
+1)
+#210000
+0)
+#215000
+b1 Q
+1)
+#220000
+0)
+#225000
+b10 Q
+1)
+#230000
+0)
+#235000
+b0 Q
+0R
+1)
+#240000
+0)
+#245000
+1)
+#250000
+0)
+#255000
+1)
+#260000
+0)
+#265000
+1)
+#270000
+0)
+#275000
+1)
+#280000
+15
+0'
+0)
+#285000
+1[
+1)
+#290000
+0)
+#295000
+1\
+1)
+#300000
+0)
+#305000
+b1 Y
+1)
+#310000
+0)
+#315000
+b10 Y
+1)
+#320000
+0)
+#325000
+16
+b0 Y
+1Z
+1)
+#330000
+0)
+#335000
+0"
+1!
+1,
+0.
+b10 D
+06
+1)
+#340000
+0)
+#345000
+1)
+#350000
+0)
+#355000
+1)
+#360000
+0)
+#365000
+1)
+#370000
+0)
+#375000
+1)
+#380000
+0)
+#385000
+1)
+#390000
+0)
+#395000
+1)
+#400000
+05
+1'
+0)
+#405000
+0[
+1)
+#410000
+0)
+#415000
+0\
+1)
+#420000
+0)
+#425000
+b1 Y
+1)
+#430000
+0)
+#435000
+b10 Y
+1)
+#440000
+0)
+#445000
+b0 Y
+0Z
+1)
+#450000
+0)
+#455000
+1)
+#460000
+0)
+#465000
+1)
+#470000
+0)
+#475000
+1)
+#480000
+0)
+#485000
+1)
+#490000
+12
+0%
+0)
+#495000
+1K
+1)
+#500000
+0)
+#505000
+1L
+1)
+#510000
+0)
+#515000
+b1 I
+1)
+#520000
+0)
+#525000
+b10 I
+1)
+#530000
+0)
+#535000
+18
+b0 I
+1J
+1)
+#540000
+0)
+#545000
+0!
+1"
+08
+0,
+1.
+b1 D
+1)
+#550000
+0)
+#555000
+1)
+#560000
+0)
+#565000
+1)
+#570000
+0)
+#575000
+1)
+#580000
+0)
+#585000
+1)
+#590000
+0)
+#595000
+1)
+#600000
+0)
+#605000
+1)
+#610000
+02
+1%
+0)
+#615000
+0K
+1)
+#620000
+0)
+#625000
+0L
+1)
+#630000
+0)
+#635000
+b1 I
+1)
+#640000
+0)
+#645000
+b10 I
+1)
+#650000
+0)
+#655000
+b0 I
+0J
+1)
+#660000
+0)
+#665000
+1)
+#670000
+0)
+#675000
+1)
+#680000
+0)
+#685000
+1)
+#690000
+b110 1
+b1001 $
+b1001 *
+0)
+#695000
+b110 :
+1)
+#700000
+15
+0'
+0)
+#705000
+1[
+b110 ;
+b110 <
+1)
+#710000
+0)
+#715000
+1\
+1)
+#720000
+0)
+#725000
+b1 Y
+1)
+#730000
+0)
+#735000
+b10 Y
+1)
+#740000
+0)
+#745000
+16
+b0 Y
+1Z
+1)
+#750000
+0)
+#755000
+0#
+1!
+b1 B
+1+
+1A
+06
+1)
+#760000
+0)
+#765000
+1)
+#770000
+0)
+#775000
+1)
+#780000
+0)
+#785000
+1)
+#790000
+0)
+#795000
+1)
+#800000
+0)
+#805000
+1)
+#810000
+0)
+#815000
+1)
+#820000
+05
+1'
+0)
+#825000
+0[
+1)
+#830000
+0)
+#835000
+0\
+1)
+#840000
+0)
+#845000
+b1 Y
+1)
+#850000
+0)
+#855000
+b10 Y
+1)
+#860000
+0)
+#865000
+b0 Y
+0Z
+1)
+#870000
+0)
+#875000
+1)
+#880000
+0)
+#885000
+1)
+#890000
+0)
+#895000
+1)
+#900000
+0)
+#905000
+1)
+#910000
+15
+0'
+0)
+#915000
+1[
+1)
+#920000
+0)
+#925000
+1\
+1)
+#930000
+0)
+#935000
+b1 Y
+1)
+#940000
+0)
+#945000
+b10 Y
+1)
+#950000
+0)
+#955000
+16
+b0 Y
+1Z
+1)
+#960000
+0)
+#965000
+06
+b10 B
+1)
+#970000
+0)
+#975000
+1)
+#980000
+0)
+#985000
+1)
+#990000
+0)
+#995000
+1)
+#1000000
+0)
+#1005000
+1)
+#1010000
+0)
+#1015000
+1)
+#1020000
+0)
+#1025000
+1)
+#1030000
+05
+1'
+0)
+#1035000
+0[
+1)
+#1040000
+0)
+#1045000
+0\
+1)
+#1050000
+0)
+#1055000
+b1 Y
+1)
+#1060000
+0)
+#1065000
+b10 Y
+1)
+#1070000
+0)
+#1075000
+b0 Y
+0Z
+1)
+#1080000
+0)
+#1085000
+1)
+#1090000
+0)
+#1095000
+1)
+#1100000
+0)
+#1105000
+1)
+#1110000
+0)
+#1115000
+1)
+#1120000
+15
+0'
+0)
+#1125000
+1[
+1)
+#1130000
+0)
+#1135000
+1\
+1)
+#1140000
+0)
+#1145000
+b1 Y
+1)
+#1150000
+0)
+#1155000
+b10 Y
+1)
+#1160000
+0)
+#1165000
+16
+b0 Y
+1Z
+1)
+#1170000
+0)
+#1175000
+0!
+0#
+0.
+1-
+b11 D
+06
+1)
+#1180000
+0)
+#1185000
+1)
+#1190000
+0)
+#1195000
+1)
+#1200000
+0)
+#1205000
+1)
+#1210000
+0)
+#1215000
+1)
+#1220000
+0)
+#1225000
+1)
+#1230000
+0)
+#1235000
+1)
+#1240000
+05
+1'
+0)
+#1245000
+0[
+1)
+#1250000
+0)
+#1255000
+0\
+1)
+#1260000
+0)
+#1265000
+b1 Y
+1)
+#1270000
+0)
+#1275000
+b10 Y
+1)
+#1280000
+0)
+#1285000
+b0 Y
+0Z
+1)
+#1290000
+0)
+#1295000
+1)
+#1300000
+0)
+#1305000
+1)
+#1310000
+0)
+#1315000
+1)
+#1320000
+0)

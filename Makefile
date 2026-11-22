@@ -1,4 +1,4 @@
-.PHONY: sim lint synth verify clean
+.PHONY: sim lint synth synth-gowin verify clean
 
 sim:
 	mkdir -p build
@@ -25,7 +25,13 @@ lint:
 synth:
 	yosys -Q -q -p 'read_verilog rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v rtl/tang_nano_1k_top.v; hierarchy -top tang_nano_1k_top; synth -top tang_nano_1k_top; check'
 
-verify: sim lint synth
+synth-gowin:
+	mkdir -p verification
+	yosys -Q -p 'read_verilog rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v rtl/tang_nano_1k_top.v; synth_gowin -top tang_nano_1k_top; check -assert; stat' > verification/gowin-yosys.log
+	sed -i -E 's/[[:blank:]]+$$//' verification/gowin-yosys.log
+	grep -E 'Found and reported 0 problems|=== tang_nano_1k_top ===' verification/gowin-yosys.log
+
+verify: sim lint synth synth-gowin
 
 clean:
 	rm -rf build

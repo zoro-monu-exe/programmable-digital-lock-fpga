@@ -1,0 +1,43 @@
+mkdir -p build
+iverilog -g2012 -Wall -s tb_digital_lock_core -o build/tb_digital_lock \
+	rtl/digital_lock_core.v sim/tb_digital_lock_core.v
+vvp build/tb_digital_lock
+VCD info: dumpfile build/digital_lock.vcd opened for output.
+PASS: all digital-lock checks passed
+sim/tb_digital_lock_core.v:123: $finish called at 280000 (1ps)
+iverilog -g2012 -Wall -s tb_button_debounce -o build/tb_button_debounce \
+	rtl/button_debounce.v sim/tb_button_debounce.v
+vvp build/tb_button_debounce
+PASS: button debounce checks passed
+sim/tb_button_debounce.v:50: $finish called at 260000 (1ps)
+iverilog -g2012 -Wall -s tb_digital_lock_top -o build/tb_digital_lock_top \
+	rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v \
+	sim/tb_digital_lock_top.v
+vvp build/tb_digital_lock_top
+VCD info: dumpfile build/digital_lock_top.vcd opened for output.
+PASS: end-to-end top-level checks passed
+sim/tb_digital_lock_top.v:122: $finish called at 2580000 (1ps)
+iverilog -g2012 -Wall -s tb_tang_nano_1k_top -o build/tb_tang_nano_1k_top \
+	rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v \
+	rtl/tang_nano_1k_top.v sim/tb_tang_nano_1k_top.v
+vvp build/tb_tang_nano_1k_top
+VCD info: dumpfile build/tang_nano_1k_top.vcd opened for output.
+PASS: Tang Nano 1K wrapper checks passed
+sim/tb_tang_nano_1k_top.v:90: $finish called at 1320000 (1ps)
+verilator --lint-only -Wall --top-module tang_nano_1k_top \
+	rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v \
+	rtl/tang_nano_1k_top.v
+- V e r i l a t i o n   R e p o r t: Verilator 5.052 2026-09-05 rev v5.052
+- Verilator: Built from 0.087 MB sources in 5 modules, into 0.034 MB in 3 C++ files needing 0.000 MB
+- Verilator: Walltime 0.009 s (elab=0.001, cvt=0.004, bld=0.000); cpu 0.009 s on 1 threads; allocated 15.723 MB
+yosys -Q -q -p 'read_verilog rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v rtl/tang_nano_1k_top.v; hierarchy -top tang_nano_1k_top; synth -top tang_nano_1k_top; check'
+mkdir -p verification
+yosys -Q -p 'read_verilog rtl/button_debounce.v rtl/digital_lock_core.v rtl/digital_lock_top.v rtl/tang_nano_1k_top.v; synth_gowin -top tang_nano_1k_top; check -assert; stat' > verification/gowin-yosys.log
+sed -i -E 's/[[:blank:]]+$//' verification/gowin-yosys.log
+grep -E 'Found and reported 0 problems|=== tang_nano_1k_top ===' verification/gowin-yosys.log
+Found and reported 0 problems.
+Found and reported 0 problems.
+=== tang_nano_1k_top ===
+Found and reported 0 problems.
+Found and reported 0 problems.
+=== tang_nano_1k_top ===
