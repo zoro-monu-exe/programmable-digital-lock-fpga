@@ -1,0 +1,31 @@
+// Tang Nano 1K: GW1NZ-LV1QN48C6/I5
+// External controls use board GPIO pins on the side headers.
+// Connect switches/buttons to GND; internal pull-ups make them active-low.
+IO_LOC "xtal_27m" 47;
+IO_PORT "xtal_27m" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "sys_rst_n" 13;
+IO_PORT "sys_rst_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "code_sw_n[0]" 24;
+IO_PORT "code_sw_n[0]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "code_sw_n[1]" 23;
+IO_PORT "code_sw_n[1]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "code_sw_n[2]" 22;
+IO_PORT "code_sw_n[2]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "code_sw_n[3]" 18;
+IO_PORT "code_sw_n[3]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "set_button_n" 17;
+IO_PORT "set_button_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "submit_button_n" 16;
+IO_PORT "submit_button_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "relock_button_n" 15;
+IO_PORT "relock_button_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "led_r_n" 9;
+IO_PORT "led_r_n" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
+IO_LOC "led_b_n" 10;
+IO_PORT "led_b_n" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
+IO_LOC "led_g_n" 11;
+IO_PORT "led_g_n" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
